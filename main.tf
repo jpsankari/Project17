@@ -1,5 +1,5 @@
 locals {
-  prefix = "SANKARI-myapp" # change to your desired prefix
+  prefix = "myapp" # change to your desired prefix
 }
 
 data "aws_caller_identity" "current" {}
