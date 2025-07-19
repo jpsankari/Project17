@@ -1,5 +1,5 @@
 locals {
-  prefix = "myapp" # change to your desired prefix
+  prefix = "SANKARI-myapp" # change to your desired prefix
 }
 
 data "aws_caller_identity" "current" {}
@@ -26,7 +26,7 @@ module "ecs" {
   }
 
   services = {
-    SANDHYA-TASKDEFINITION = {
+    SANKARI-TASKDEFINITION = {
       cpu    = 512
       memory = 1024
       container_definitions = {
