@@ -5,7 +5,10 @@ locals {
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-
+#Call My VPC Module
+module "module_project" {
+  source = "./module/"
+}
 
 resource "aws_ecr_repository" "ecr" {
   name         = "${local.prefix}-ecr"
@@ -44,8 +47,8 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                         = [aws_subnet.main_subnet.id] #List of subnet IDs to use for your tasks
-      security_group_ids                 = ["sg-0653e61cb22802229"]     #Create a SG resource and pass it here
+      subnet_ids                         = [module.module_project.subnet_id] #List of subnet IDs to use for your tasks
+      security_group_ids                 = [module.module_project.sg1_id]     #Create a SG resource and pass it here
     }
   }
 }
