@@ -1,5 +1,5 @@
 locals {
-  prefix = "Project17_myapp1" # change to your desired prefix
+  prefix = "project17_myapp1" # change to your desired prefix
 }
 
 data "aws_caller_identity" "current" {}
