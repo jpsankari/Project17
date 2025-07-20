@@ -1,5 +1,5 @@
 locals {
-  prefix = "myapp1" # change to your desired prefix
+  prefix = "Project17_myapp1" # change to your desired prefix
 }
 
 data "aws_caller_identity" "current" {}
@@ -29,11 +29,11 @@ module "ecs" {
   }
 
   services = {
-    MYAPP1-TASKDEFINITION = {
+    Project17-TASKDEFINITION = {
       cpu    = 512
       memory = 1024
       container_definitions = {
-        SANDHYA-CONTAINER = {
+        Project17-CONTAINER = {
           essential = true
           #image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-ecr:latest"
           image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.id}.amazonaws.com/${local.prefix}-ecr:latest"
