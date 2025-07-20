@@ -13,3 +13,4 @@ resource "aws_subnet" "Sankari_Subnet" {
   tags = {
     Name = "Sankari_Subnet"
 }
+}
