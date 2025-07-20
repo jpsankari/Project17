@@ -12,6 +12,4 @@ resource "aws_subnet" "Sankari_Subnet" {
   map_public_ip_on_launch = true
   tags = {
     Name = "Sankari_Subnet"
-    id = "Sankari_Subnet-085e1089341f1aaa9" # Replace with your actual subnet ID
-  }
 }
