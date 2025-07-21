@@ -1,46 +1,52 @@
-name: Build and Push Docker Image to Amazon ECR
+name: Migrate Image from GHCR to ECR
 
 on:
-  push:
-    branches: [main]  # or any branch you want
+  workflow_dispatch:  # Manual trigger; change to 'push' if needed
 
 jobs:
-  build-and-push:
+  ghcr-to-ecr:
     runs-on: ubuntu-latest
 
     permissions:
       id-token: write
       contents: read
+      packages: read  # Required to access GHCR
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure AWS credentials
-         uses: aws-actions/configure-aws-credentials@v1
-         with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+      #- name: Configure AWS credentials (OIDC or secrets)
+       # uses: aws-actions/configure-aws-credentials@v4
+        #with:
+         # # OIDC (preferred)
+          #role-to-assume: arn:aws:iam::<AWS_ACCOUNT_ID>:role/<GITHUB_OIDC_ROLE>
+          #aws-region: us-east-1
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
 
-
-      - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: Build and push image
+      - name: Pull image from GHCR
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          docker pull ghcr.io/jpsankari/my-app:latest
 
-      - name: Build, Tag, and Push Docker Image
+      - name: Tag image for ECR
         env:
-         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: my-app
-         IMAGE_TAG: latest
-         run: |
-            docker build -t $ECR_REPOSITORY .
-            docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPO: <your-ecr-repo>
+          IMAGE_TAG: <tag>
+        run: |
+          docker tag ghcr.io/jpsankari/my-app:$IMAGE_TAG \
+            $ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG
+
+      - name: Push image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPO: <your-ecr-repo>
+          IMAGE_TAG: <tag>
+        run: |
+          docker push $ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG
