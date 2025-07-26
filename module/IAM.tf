@@ -19,6 +19,7 @@ resource "aws_iam_role_policy_attachment" "xray_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
 }
 
+/*
 //IAM Task Execution Role
 resource "aws_iam_role" "task_execution_role" {
   name = "Project-ecs-taskexecutionrole"
@@ -72,3 +73,4 @@ resource "aws_iam_policy_attachment" "github_oidc_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess" # or scoped custom policy
   roles      = [aws_iam_role.github_oidc.name]
 }
+*/
