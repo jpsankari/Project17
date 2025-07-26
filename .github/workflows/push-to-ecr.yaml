@@ -21,8 +21,8 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           IMAGE_NAME: my-image
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
-          docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+          docker build -t $DOCKER_USERNAME/$IMAGE_NAME .
+          docker push $DOCKER_USERNAME/$IMAGE_NAME:latest
 
   test:
     runs-on: ubuntu-latest
