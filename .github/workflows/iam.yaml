@@ -24,6 +24,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::255945442255:oidc-provider/token.actions.githubusercontent.com
+          role-session-name: GitHubActions
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy with Terraform
