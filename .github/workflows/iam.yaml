@@ -22,12 +22,8 @@ jobs:
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
-        with:
-          role-to-assume: arn:aws:iam::255945442255:role/github-oidc-deploy-role
-          role-session-name: GitHubActions
-          aws-region: ${{ env.AWS_REGION }}
-      - run: aws sts get-caller-identity
-
+        aws-region: ${{ env.AWS_REGION }}
+   
       - name: Deploy with Terraform
         run: |
           terraform init
