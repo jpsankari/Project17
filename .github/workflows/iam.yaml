@@ -26,6 +26,7 @@ jobs:
           role-to-assume: arn:aws:iam::255945442255:oidc-provider/token.actions.githubusercontent.com
           role-session-name: GitHubActions
           aws-region: ${{ env.AWS_REGION }}
+      - run: aws sts get-caller-identity
 
       - name: Deploy with Terraform
         run: |
