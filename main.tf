@@ -16,7 +16,7 @@ resource "aws_ecr_repository" "ecr" {
   force_delete = true
 }
 */
-
+/*
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
@@ -30,7 +30,7 @@ module "ecs" {
     }
   }
 
-/* Sankari
+
   services = {
     Project17-TASKDEFINITION = {
       cpu    = 512
