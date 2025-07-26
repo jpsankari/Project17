@@ -1,7 +1,8 @@
 name: Push GHCR image to ECR
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
