@@ -25,6 +25,8 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::255945442255:role/github-oidc-deploy-role
           aws-region: ${{ env.AWS_REGION }}
+          
+      - name: Get OIDC token
         run: |
           echo "OIDC token:"
           curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" $ACTIONS_ID_TOKEN_REQUEST_URL
