@@ -7,7 +7,7 @@ on:
 env:            
   AWS_REGION: ap-southeast-1  
   IMAGE_TAG: latest
-  ECR_REPOSITORY: "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/project17_myapp1-ecr"
+  ECR_REPOSITORY: "${{ secrets.REPOSITORY }}"
 
 jobs:
   build:
