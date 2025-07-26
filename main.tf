@@ -30,6 +30,7 @@ module "ecs" {
     }
   }
 
+/* Sankari
   services = {
     Project17-TASKDEFINITION = {
       cpu    = 512
@@ -53,4 +54,5 @@ module "ecs" {
       security_group_ids                 = [module.module_project.sg1_id]     #Create a SG resource and pass it here
     }
   }
+  */
 }
