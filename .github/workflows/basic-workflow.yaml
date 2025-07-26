@@ -1,6 +1,6 @@
 name: Build & Push to Amazon ECR
 on:
-`workflow_dispatch:
+  workflow_dispatch:
 
 env:            
   AWS_REGION: ap-southeast-1 
