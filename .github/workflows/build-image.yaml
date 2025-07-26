@@ -38,13 +38,9 @@ jobs:
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
- 
-    - name: push Docker image to ECR        
       run: |
-          IMAGE_URI=$ECR_REPOSITORY:$IMAGE_TAG
-          docker build -t $IMAGE_URI .
-          docker push $IMAGE_URI
-   
+          docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
+          docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
 
 
   #test:
