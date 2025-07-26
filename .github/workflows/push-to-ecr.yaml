@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 env:            
   AWS_REGION: ap-southeast-1  
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,15 +34,21 @@ jobs:
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           IMAGE_NAME: my-image
-          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-          IMAGE_TAG: latest
       run: |
           docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
           docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG        
-        
+
+    - name: push Docker image to ECR
+      env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+      ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+      IMAGE_TAG: latest
+      run: |
+          IMAGE_URI=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $IMAGE_URI .
+          docker push $IMAGE_URI
+
 
   #test:
    # runs-on: ubuntu-latest
