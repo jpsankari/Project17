@@ -7,7 +7,10 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
-    steps:
+env:            
+  AWS_REGION: ap-southeast-1 
+
+  steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -16,7 +19,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
+        aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
