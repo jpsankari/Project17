@@ -1,4 +1,4 @@
-name: Build & Push to Amazon ECR
+name: Basic-workflow
 
 on:
   workflow_dispatch:
