@@ -42,7 +42,6 @@ jobs:
 
     - name: push Docker image to ECR
       env:
-      AWS_REGION: ${{ env.AWS_REGION }}
       ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
       ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
       IMAGE_TAG: latest
