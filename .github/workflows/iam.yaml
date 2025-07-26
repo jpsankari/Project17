@@ -20,7 +20,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::AKIATXF4JQPH52H6D4ZJ:role/<CI/CD-OIDC-Role>
-          aws-region: us-east-1
+          aws-region: as-southeast-1
 
       - name: Deploy with Terraform
         run: |
