@@ -55,12 +55,12 @@ resource "aws_iam_role" "github_oidc" {
     Statement = [{
       Effect = "Allow",
       Principal = {
-        Federated = "arn:aws:iam::AKIATXF4JQPH52H6D4ZJ:oidc-provider/token.actions.githubusercontent.com"
+        Federated = "arn:aws:iam::255945442255:oidc-provider/token.actions.githubusercontent.com"
       },
       Action = "sts:AssumeRoleWithWebIdentity",
       Condition = {
         StringLike = {
-          "token.actions.githubusercontent.com:sub" = "repo:<your-org>/<your-repo>:*"
+          "token.actions.githubusercontent.com:sub" = "repo:jpsankari/Project:*"
         }
       }
     }]
