@@ -3,7 +3,9 @@ name: Push GHCR image to ECR
 on:
   push:
     branches: [ "main" ]
-
+env:            
+  AWS_REGION: ap-southeast-1  
+  
 jobs:
   build:
     runs-on: ubuntu-latest
