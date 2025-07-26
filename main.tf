@@ -10,13 +10,12 @@ module "module_project" {
   source = "./module/"
 }
 
-/*
+/* 
 resource "aws_ecr_repository" "ecr" {
  name         = "${local.prefix}-ecr"
   force_delete = true
 }
-*/
-/*
+
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
@@ -54,5 +53,6 @@ module "ecs" {
       security_group_ids                 = [module.module_project.sg1_id]     #Create a SG resource and pass it here
     }
   }
-  */
+  
 }
+*/
