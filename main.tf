@@ -2,7 +2,7 @@ locals {
   prefix = "project17_myapp1" # change to your desired prefix
 }
 
-
+/*
 #Call My VPC Module
 module "module_project" {
   source = "./module/"
@@ -58,3 +58,4 @@ module "ecs" {
   }
   
 }
+*/
