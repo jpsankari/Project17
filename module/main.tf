@@ -1,6 +1,5 @@
-resource "aws_iam_role" "ecs_xray_task_role" {
-  name_prefix = "${var.name_prefix_base}-ecs-xray-taskrole"  
-  name = local.name_prefix
+resource "aws_iam_role" "ecs_xray_task_role" { 
+  name = "${var.name_prefix_base}-ecs-xray-taskexecutionrole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -23,8 +22,7 @@ resource "aws_iam_role_policy_attachment" "xray_policy_attachment" {
 /*
 //Task Execution Role for X-Ray
 resource "aws_iam_role" "ecs_execution_role" {
-  name_prefix = "${var.name_prefix_base}-ecs-xray-taskexecutionrole"
-  name = local.name_prefix
+   name = "${var.name_prefix_base}-ecs-xray-taskexecutionrole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
