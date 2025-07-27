@@ -12,6 +12,7 @@ output "sg1_id" {
 }
 */
 //need to check
+/*
 output "task_role_arn" {
   value = module.task_role_arn.arn
 }
@@ -20,3 +21,4 @@ output "ecs_execution_role_arn" {
   value       = module.execution_role_arn.arn
   description = "ECS task execution role ARN"
 }
+*/
