@@ -2,7 +2,6 @@ locals {
   prefix = "Project17" # change to your desired prefix
 }
 variable "name_prefix" {
-  description = "Prefix for resource names"
+  description = "Project17"
   type        = string
-  default     = local.prefix
 }
