@@ -41,7 +41,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Plan
-      run: terraform plan -input=false -var="name_prefix_base=myuser"
+      run: terraform plan -input=false -var="name_prefix_base=Project17"
  
       
     - name: Terraform Apply
