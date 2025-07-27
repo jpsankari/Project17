@@ -15,6 +15,5 @@ output "task_role_arn" {
 }
 
 output "execution_role_arn" {
-  value       = aws_iam_role.ecs_xray_task_role.arn
-  description = "ARN of the ECS task execution role"
+  value = aws_iam_role.ecs_xray_execution_role
 }
