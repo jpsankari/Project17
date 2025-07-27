@@ -45,4 +45,4 @@ jobs:
  
       
     - name: Terraform Apply
-      run: terraform apply --auto-approve
+      run: terraform apply --auto-approve -input=false -var="name_prefix_base=Project17"
