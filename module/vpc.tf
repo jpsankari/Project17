@@ -31,6 +31,6 @@ resource "aws_security_group" "project17_sg" {
 
 
   tags = {
-    Name = "Project17-Sankari-sg"
+    Name = "Project17-SG"
   }
 }
