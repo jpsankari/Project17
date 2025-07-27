@@ -32,4 +32,5 @@ jobs:
     - name: Deploy with Terraform
       run: |
         terraform init
+        terraform plan
         terraform apply -auto-approve
