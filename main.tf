@@ -1,7 +1,7 @@
 locals {
   prefix = "Project17" # change to your desired prefix
 }
-
+/*
 #Call My VPC Module
 module "module_project" {
   source      = "./module/"
@@ -12,7 +12,7 @@ module "module_project" {
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-/*
+
 resource "aws_ecr_repository" "ecr" {
  name         = "${local.prefix}-ecr"
   force_delete = true  
