@@ -6,10 +6,10 @@ locals {
 #Call My VPC Module
 module "module_project" {
   source      = "./module/"
-  name_prefix = local.prefix
+  name_prefix_base  = var.name_prefix_base
 }
 
-
+/*
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
@@ -18,7 +18,7 @@ resource "aws_ecr_repository" "ecr" {
  name         = "${local.prefix}-ecr"
   force_delete = true  
 }
-
+*/
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"

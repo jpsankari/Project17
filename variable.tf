@@ -1,4 +1,4 @@
 variable "name_prefix_base" {
+  description = "Base name prefix for resources"
   type        = string
-  description = "Base name prefix from parent module"
 }

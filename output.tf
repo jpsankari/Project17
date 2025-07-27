@@ -1,3 +1,4 @@
+/*
 output "vpc_id" {
   value = aws_vpc.Sankari_VPC.id
 }
@@ -9,12 +10,13 @@ output "subnet_id" {
 output "sg1_id" {
   value = aws_security_group.project17_sg.id
 }
+*/
 
 output "task_role_arn" {
-  value = aws_iam_role.ecs_task_role.arn
+  value = module.ecs_task_xray_role.task_role_arn
 }
 
-output "execution_role_arn" {
-  value       = aws_iam_role.ecs_execution_role.arn
-  description = "ARN of the ECS task execution role"
+output "ecs_execution_role_arn" {
+  value       = module.ecs_execution_role.execution_role_arn
+  description = "ECS task execution role ARN"
 }
