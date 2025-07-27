@@ -1,11 +1,12 @@
 locals {
-  prefix = "project17_myapp1" # change to your desired prefix
+  prefix = "Project17" # change to your desired prefix
 }
 
 
 #Call My VPC Module
 module "module_project" {
-  source = "./module/"
+  source      = "./module/"
+  name_prefix = local.prefix
 }
 
 
@@ -30,6 +31,8 @@ module "ecs" {
       }
     }
   }
+
+  
 //ECS
   services = {
     Project17-TASKDEFINITION = {
