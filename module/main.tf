@@ -21,7 +21,7 @@ resource "aws_iam_role_policy_attachment" "xray_policy_attachment" {
 
 
 resource "aws_iam_role_policy" "oidc_deploy_allow_iam" {
-  role = aws_iam_role.github_oidc_deploy_role.name
+  role=data.aws_iam_role.github_deploy.name
 
   policy = jsonencode({
     Version = "2012-10-17"
