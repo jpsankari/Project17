@@ -21,9 +21,7 @@ resource "aws_iam_role_policy_attachment" "xray_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
 }
 
-
-/*
-//Task Execution Role for X-Ray
+//Task Execution Role
 resource "aws_iam_role" "ecs_execution_role" {
    name = "${var.name_prefix_base}-ecs-xray-taskexecutionrole"
   assume_role_policy = jsonencode({
