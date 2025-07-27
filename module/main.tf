@@ -15,13 +15,13 @@ resource "aws_iam_role" "ecs_xray_task_role" {
   })
 }
 
-/*
-//Task Execution Role for X-Ray
 resource "aws_iam_role_policy_attachment" "xray_policy_attachment" {
   role       = aws_iam_role.ecs_xray_task_role.name
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
 }
 
+/*
+//Task Execution Role for X-Ray
 resource "aws_iam_role" "ecs_execution_role" {
   name_prefix = "${var.name_prefix_base}-ecs-xray-taskexecutionrole"
   name = local.name_prefix

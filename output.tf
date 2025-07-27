@@ -11,12 +11,12 @@ output "sg1_id" {
   value = aws_security_group.project17_sg.id
 }
 */
-
+//need to check
 output "task_role_arn" {
-  value = module.ecs_task_xray_role.task_role_arn
+  value = module.task_role_arn.arn
 }
 
 output "ecs_execution_role_arn" {
-  value       = module.ecs_execution_role.execution_role_arn
+  value       = module.execution_role_arn.arn
   description = "ECS task execution role ARN"
 }
