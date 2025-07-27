@@ -19,6 +19,29 @@ resource "aws_iam_role_policy_attachment" "xray_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
 }
 
+
+resource "aws_iam_role_policy" "oidc_deploy_allow_iam" {
+  role = aws_iam_role.github_oidc_deploy_role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "iam:CreateRole",
+          "iam:PutRolePolicy",
+          "iam:AttachRolePolicy",
+          "iam:PassRole"
+        ]
+        Resource = [
+          "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.name_prefix_base}-*"
+        ]
+      }
+    ]
+  })
+}
+
 /*
 //Task Execution Role for X-Ray
 resource "aws_iam_role" "ecs_execution_role" {
