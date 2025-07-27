@@ -28,7 +28,9 @@ resource "aws_iam_role" "ecs_xray_execution_role" {
     Version = "2012-10-17",
     Statement = [{
       Effect    = "Allow",
-      Principal = { Service = "ecs-tasks.amazonaws.com" },
+      Principal = {
+         Service = "ecs-tasks.amazonaws.com" 
+         },
       Action    = "sts:AssumeRole"
     }]
   })

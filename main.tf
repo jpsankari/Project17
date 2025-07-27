@@ -1,8 +1,7 @@
 locals {
   prefix = "Project17" # change to your desired prefix
 }
-/*
-#Call My VPC Module
+
 module "module_project" {
   source      = "./module/"
   name_prefix_base  = var.name_prefix_base
@@ -57,4 +56,3 @@ module "ecs" {
   }
   
 }
-*/
