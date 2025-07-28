@@ -3,7 +3,7 @@ locals {
 }
 
 module "module_project" {
-  source      = "./module/*"
+  source      = "./module/"
   name_prefix_base  = var.name_prefix_base
 }
 
