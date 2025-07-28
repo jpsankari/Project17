@@ -3,7 +3,7 @@ locals {
 }
 
 module "module_project" {
-  source      = "./module/"
+  source      = "./module/*" # Ensure this points to the correct module path
   name_prefix_base  = var.name_prefix_base
 }
 
@@ -51,8 +51,8 @@ module "ecs" {
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
      # subnet_ids                         = [module.module_project.output_sankari_vpc_id.ids]
-      subnet_ids                         = [module_project.output_sankari_subnet_id.ids]
-      security_group_ids                 = [module_project.output_sankari_sg_id.ids]     #Create a SG resource and pass it here
+      subnet_ids                         = [module.module_project.Sankari_Subnet.id]
+      security_group_ids                 = [module.module_project.Sankari_SG.id]     #Create a SG resource and pass it here
     }
   }
   
