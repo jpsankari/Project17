@@ -1,4 +1,4 @@
-resource "aws_vpc" "Sankari_VPC" {
+resource "aws_vpc" "this_vpc" {
 cidr_block="10.0.0.0/16"
 tags  = {
     name = "Sankari_VPC"
@@ -6,7 +6,7 @@ tags  = {
 }
 
 
-resource "aws_subnet" "Sankari_Subnet" {
+resource "aws_subnet" "this_subnet" {
   vpc_id            = aws_vpc.Sankari_VPC.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-southeast-1a"
@@ -16,10 +16,10 @@ resource "aws_subnet" "Sankari_Subnet" {
 }
 }
 
-resource "aws_security_group" "Sankari_SG" {
+resource "aws_security_group" "this_sg" {
   name        = "SankariEx-sg"
   description = "Main security group"
-  vpc_id      = aws_vpc.Sankari_VPC.id
+  vpc_id      = aws_vpc.this.id
 
   ingress {
     description      = "Allow HTTP"
