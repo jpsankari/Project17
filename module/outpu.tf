@@ -1,19 +1,19 @@
-output "vpc_id" {
+output "output_sankari_vpc_id" {
   value = aws_vpc.Sankari_VPC.id
 }
 
-output "subnet_id" {
-  value = aws_subnet.project17_subnet.id
+output "output_sankari_subnet_id" {
+  value = aws_subnet.Sankari_Subnet.id
 }
 
-output "sg1_id" {
-  value = aws_security_group.project17_sg.id
+output "output_sankari_sg_id" {
+  value = aws_security_group.Sankari_SG.id
 }
 
-output "task_role_arn" {
+output "output_sankari_task_role_arn" {
   value = aws_iam_role.ecs_xray_task_role.arn
 }
 
-output "execution_role_arn" {
+output "output_sankari_execution_role_arn" {
   value = aws_iam_role.ecs_xray_execution_role.arn
 }

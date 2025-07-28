@@ -6,7 +6,7 @@ tags  = {
 }
 
 
-resource "aws_subnet" "project17_subnet" {
+resource "aws_subnet" "Sankari_Subnet" {
   vpc_id            = aws_vpc.Sankari_VPC.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-southeast-1a"
@@ -16,8 +16,8 @@ resource "aws_subnet" "project17_subnet" {
 }
 }
 
-resource "aws_security_group" "project17_sg" {
-  name        = "Project17-Sankari-sg"
+resource "aws_security_group" "Sankari_SG" {
+  name        = "SankariEx-sg"
   description = "Main security group"
   vpc_id      = aws_vpc.Sankari_VPC.id
 
@@ -31,6 +31,6 @@ resource "aws_security_group" "project17_sg" {
 
 
   tags = {
-    Name = "Project17-SG"
+    Name = "SankariEx-SG"
   }
 }

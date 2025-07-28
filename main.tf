@@ -1,5 +1,5 @@
 locals {
-  prefix = "Project17" # change to your desired prefix
+  prefix = "SankariEx" # change to your desired prefix
 }
 
 module "module_project" {
@@ -32,11 +32,11 @@ module "ecs" {
 
   
   services = {
-    Project17-TASKDEFINITION = {
+    SankariEx-TASKDEFINITION = {
       cpu    = 512
       memory = 1024
       container_definitions = {
-        Project17-CONTAINER = {
+        SankariEx-CONTAINER = {
           essential = true
           #image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-ecr:latest"
           image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.id}.amazonaws.com/${local.prefix}-ecr:latest"
@@ -50,8 +50,8 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                         = [module.project17_subnet.subnet_ids] #List of subnet IDs to use for your tasks
-      security_group_ids                 = [module.project17_sg.security_group_ids]     #Create a SG resource and pass it here
+      subnet_ids                         = [module.output_sankari_subnet_id.ids] #List of subnet IDs to use for your tasks
+      security_group_ids                 = [module.output_sankari_sg_id.id]     #Create a SG resource and pass it here
     }
   }
   
