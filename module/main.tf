@@ -1,27 +1,5 @@
 data "aws_caller_identity" "current" {}
 
-resource "aws_iam_role" "sankariec_github_oidc_deploy" {
-  name = "sankariEx_github-oidc-deploy-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Federated = aws_iam_openid_connect_provider.token.actions.githubusercontent.com.arn
-        }
-        Action = "sts:AssumeRoleWithWebIdentity"
-        Condition = {
-          StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:jpsankari/*:ref:refs/heads/<BRANCH>"
-          }
-        }
-      }
-    ]
-  })
-}
-
 resource "aws_iam_role" "ecs_xray_task_role" { 
   name = "${var.name_prefix_base}-ecs-xray-taskrole"
   assume_role_policy = jsonencode({

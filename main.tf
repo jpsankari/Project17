@@ -50,7 +50,7 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                         = [module.output_sankari_subnet_id.ids] #List of subnet IDs to use for your tasks
+      subnet_ids                         = [module.output_sankari_subnet_id.ids]
       security_group_ids                 = [module.output_sankari_sg_id.id]     #Create a SG resource and pass it here
     }
   }

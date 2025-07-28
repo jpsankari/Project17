@@ -1,4 +1,4 @@
-
+/*
 output "vpc_id" {
   value = aws_vpc.Sankari_VPC.id
 }
@@ -20,3 +20,4 @@ output "ecs_execution_role_arn" {
   value       = module.execution_role_arn.arn
   description = "ECS task execution role ARN"
 }
+*/
