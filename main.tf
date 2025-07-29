@@ -41,7 +41,7 @@ module "ecs" {
         SankariEx-CONTAINER = {
           essential = true
           #image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-ecr:latest"
-          image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.id}.amazonaws.com/${local.prefix}-ecr:latest"
+          image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.id}.amazonaws.com/sankari-ecr:latest"
           port_mappings = [
             {
               containerPort = 8080
