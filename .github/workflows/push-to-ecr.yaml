@@ -1,8 +1,9 @@
 name: Push image Docker to ECR
+
 on:
   #push:
     #branches: [ "main" ]
-  workflow_dispatch:
+    workflow_dispatch:
 
 env:            
   AWS_REGION: ap-southeast-1  
@@ -32,7 +33,7 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build, tag, and push image to DockerHub
+    - name: Push image from Docker to ECR
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
