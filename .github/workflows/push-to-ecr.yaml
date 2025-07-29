@@ -8,7 +8,7 @@ on:
 env:            
   AWS_REGION: ap-southeast-1  
   IMAGE_TAG: latest
-  ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY }}
+  ECR_REPOSITORY1: ${{secrets.ECR_REPOSITORY }}
 
 
 jobs:
@@ -44,13 +44,14 @@ jobs:
 
     - name: push Docker image to ECR        
       run: |
-          IMAGE_URI=$ECR_REPOSITORY:$IMAGE_TAG
+          IMAGE_URI=$ECR_REPOSITORY1:$IMAGE_TAG
+          docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
    
 
 
   #test:
-   #         docker build -t $IMAGE_URI .
+   #         
    # runs-on: ubuntu-latest
     #steps:
      # - name: Checkout code
