@@ -13,7 +13,7 @@ data "aws_region" "current" {}
 
 
 resource "aws_ecr_repository" "ecr" {
- name = "${local.prefix}-ecr"
+ name = "sankariEx-ecr"
   force_delete = true  
 }
 
