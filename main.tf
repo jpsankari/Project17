@@ -13,8 +13,8 @@ data "aws_region" "current" {}
 
 
 resource "aws_ecr_repository" "ecr" {
- name = "sankariEx-ecr"
-  force_delete = true  
+  name = "sankari-ecr"
+  force_delete = true
 }
 
 module "ecs" {
