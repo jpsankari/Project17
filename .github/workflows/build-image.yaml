@@ -2,7 +2,7 @@ name: Build image using Docker
 on:
   #push:
     #branches: [ "main" ]
-    workflow_dispatch:
+  workflow_dispatch:
 
 env:            
   AWS_REGION: ap-southeast-1  
