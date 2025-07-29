@@ -8,7 +8,8 @@ on:
 env:            
   AWS_REGION: ap-southeast-1  
   IMAGE_TAG: latest
-  ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY }}
+  #ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY }}
+  ECR_REPOSITORY: my-image
 
 jobs:
   build:
