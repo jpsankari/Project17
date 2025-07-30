@@ -1,17 +1,21 @@
 
-data "aws_vpc" "existing" {
+variable "vpc_name" {
+  type    = string
+  default = "SankariEx_VPC"
+}
+
+data "aws_vpcs" "by_name" { //check existing VPCs by name
   filter {
     name   = "tag:Name"
-    values = "Sankari_VPC"
+    values = [var.vpc_name]
   }
 }
 
 resource "aws_vpc" "this_vpc" {
-count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
-
-cidr_block="10.0.0.0/16"
-tags  = {
-    name = "SankariEx_VPC"
+  count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
+  cidr_block="10.0.0.0/16"
+  tags  = {
+    Name = var.vpc_name
     }
 }
 
