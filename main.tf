@@ -17,7 +17,7 @@ module "module_iam" {
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-
+/*
 resource "aws_ecr_repository" "ecr" {
   name = "sankari-ecr"
   force_delete = true
@@ -25,7 +25,7 @@ resource "aws_ecr_repository" "ecr" {
 
 # subnetID_base and SecurityGrpID_base are now defined in the locals block above
 
-/*
+
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
