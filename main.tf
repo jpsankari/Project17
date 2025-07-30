@@ -1,8 +1,5 @@
 locals {
   prefix = "SankariEx" # change to your desired prefix
-  vpc_id = module.module_vpc.vpc_id
-  subnet_ids = module.module_vpc.subnet_ids
-  security_group_ids = module.module_vpc.security_group_ids
 }
 
 module "module_vpc" {
