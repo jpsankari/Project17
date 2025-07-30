@@ -5,16 +5,10 @@ locals {
 }
 
 module "module_vpc" {
-  source      = "./modules/vpc" # Ensure this points to the correct module path
+  source      = "./modules/" # Ensure this points to the correct module path
   name_prefix_base  = var.name_prefix_base
  }
 
-/*
-module "module_iam" {
-  source      = "./modules/iam" # Ensure this points to the correct module path
-  name_prefix_base  = var.name_prefix_base
- }
-*/
 
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
