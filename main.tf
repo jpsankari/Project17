@@ -1,7 +1,8 @@
 locals {
   prefix = "SankariEx" # change to your desired prefix
-  subnetID_base = module.module_vpc.subnet_id
-  SecurityGrpID_base = module.module_vpc.sg_id
+  vpc_id = module.module_vpc.vpc_id
+  subnet_ids = module.module_vpc.subnet_ids
+  security_group_ids = module.module_vpc.security_group_ids
 }
 
 module "module_vpc" {
@@ -41,6 +42,8 @@ module "ecs" {
     }
   }
 
+
+
   
   services = {
     SankariEx-TASKDEFINITION = {
@@ -64,8 +67,8 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                         = [subnetID_base]
-      security_group_ids                 = [SecurityGrpID_base]    #Create a SG resource and pass it here
+      subnet_ids = "${local.prefix}_Subnet"
+      security_group_ids  = "${local.prefix}_security_group"
     }
   }
   

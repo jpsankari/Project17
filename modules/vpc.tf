@@ -11,7 +11,7 @@ count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
 
 cidr_block="10.0.0.0/16"
 tags  = {
-    name = "Sankari_VPC"
+    name = "SankariEx_VPC"
     }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "this_subnet" {
   availability_zone = "ap-southeast-1a"
   map_public_ip_on_launch = true
   tags = {
-    Name = "Sankari_Subnet"
+    Name = "SankariEx_Subnet"
 }
 }
 
@@ -41,6 +41,6 @@ resource "aws_security_group" "this_sg" {
 
 
   tags = {
-    Name = "SankariEx-SG"
+    Name = "SankariEx_security_group"
   }
 }
