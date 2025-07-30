@@ -22,7 +22,7 @@ resource "aws_ecr_repository" "ecr" {
   name = "sankari-ecr"
   force_delete = true
 }
-
+*/
 # subnetID_base and SecurityGrpID_base are now defined in the locals block above
 
 
@@ -71,4 +71,3 @@ module "ecs" {
   
 }
 
-*/
