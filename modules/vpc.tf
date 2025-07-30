@@ -2,7 +2,7 @@
 data "aws_vpc" "existing" {
   filter {
     name   = "tag:Name"
-    values = ["Sankari_VPC"]
+    values = "Sankari_VPC"
   }
 }
 
