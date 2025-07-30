@@ -11,12 +11,12 @@ module "module_vpc" {
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-
+/*
 resource "aws_ecr_repository" "ecr" {
   name = "sankari-ecr"
   force_delete = true
 }
-
+*/
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
