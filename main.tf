@@ -3,7 +3,7 @@ locals {
 }
 
 module "module_vpc" {
-  source      = "./module/" # Ensure this points to the correct module path
+  source      = "./modules/" # Ensure this points to the correct module path
   name_prefix_base  = var.name_prefix_base
  }
 
@@ -35,8 +35,9 @@ module "ecs" {
     SankariEx-TASKDEFINITION = {
       cpu    = 512
       memory = 1024
-      execution_role_arn   = module.module_vpc.task_role_arn
-      task_role_arn        = module.module_vpc.execution_role_arn
+      execution_role_arn   = module.module_vpc.execution_role_arn
+      task_role_arn        = module.module_vpc.task_role_arn
+      
       container_definitions = {
         SankariEx-CONTAINER = {
           essential = true
