@@ -64,8 +64,8 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids = "${local.prefix}_Subnet"
-      security_group_ids  = "${local.prefix}_security_group"
+      subnet_ids = "${local.prefix}_Subnet.id"
+      security_group_ids  = "${local.prefix}_security_group.id"
     }
   }
   
