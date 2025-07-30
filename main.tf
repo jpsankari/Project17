@@ -1,5 +1,7 @@
 locals {
   prefix = "SankariEx" # change to your desired prefix
+  subnetID_base = module.module_vpc.subnet_id
+  SecurityGrpID_base = module.module_vpc.sg_id
 }
 
 module "module_vpc" {
@@ -17,6 +19,9 @@ resource "aws_ecr_repository" "ecr" {
   force_delete = true
 }
 */
+# subnetID_base and SecurityGrpID_base are now defined in the locals block above
+/*
+
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
@@ -53,9 +58,10 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                         = [module.module_vpc.subnet_id]
-      security_group_ids                 = [module.module_vpc.sg_id]    #Create a SG resource and pass it here
+      subnet_ids                         = [subnetID_base]
+      security_group_ids                 = [SecurityGrpID_base]    #Create a SG resource and pass it here
     }
   }
   
 }
+*/
