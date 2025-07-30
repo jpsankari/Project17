@@ -9,18 +9,24 @@ module "module_vpc" {
   name_prefix_base  = var.name_prefix_base
  }
 
+/*
+module "module_iam" {
+  source      = "./modules/iam" # Ensure this points to the correct module path
+  name_prefix_base  = var.name_prefix_base
+ }
+*/
 
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-/*
+
 resource "aws_ecr_repository" "ecr" {
   name = "sankari-ecr"
   force_delete = true
 }
-*/
+
 # subnetID_base and SecurityGrpID_base are now defined in the locals block above
-/*
+
 
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
@@ -40,8 +46,8 @@ module "ecs" {
     SankariEx-TASKDEFINITION = {
       cpu    = 512
       memory = 1024
-    # execution_role_arn   = module.module_vpc.execution_role_arn
-     #task_role_arn        = module.module_vpc.task_role_arn
+      execution_role_arn   = "${local.prefix}-ecs-xray-taskexecutionrole"
+      task_role_arn        = "${local.prefix}-ecs-xray-taskrole"
       
       container_definitions = {
         SankariEx-CONTAINER = {
@@ -64,4 +70,3 @@ module "ecs" {
   }
   
 }
-*/
