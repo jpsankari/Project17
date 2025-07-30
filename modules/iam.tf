@@ -1,4 +1,4 @@
-data "aws_caller_identity" "current" {}
+#data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "ecs_xray_task_role" { 
   name = "${var.name_prefix_base}-ecs-xray-taskrole"

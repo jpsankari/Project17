@@ -1,4 +1,14 @@
+
+data "aws_vpc" "existing" {
+  filter {
+    name   = "tag:Name"
+    values = ["Sankari_VPC"]
+  }
+}
+
 resource "aws_vpc" "this_vpc" {
+count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
+
 cidr_block="10.0.0.0/16"
 tags  = {
     name = "Sankari_VPC"
