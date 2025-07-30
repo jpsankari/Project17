@@ -25,7 +25,7 @@ resource "aws_ecr_repository" "ecr" {
 
 # subnetID_base and SecurityGrpID_base are now defined in the locals block above
 
-
+/*
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "5.6.0"
@@ -64,9 +64,11 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids = "${local.prefix}_Subnet.id"
+      subnet_ids =  "${local.prefix}_Subnet.id"
       security_group_ids  = "${local.prefix}_security_group.id"
     }
   }
   
 }
+
+*/
