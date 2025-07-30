@@ -21,7 +21,8 @@ resource "aws_vpc" "this_vpc" {
 
 
 resource "aws_subnet" "this_subnet" {
-  vpc_id            = aws_vpc.this_vpc.id
+  count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
+  vpc_id            = aws_vpc.this_vpc[0].id  
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-southeast-1a"
   map_public_ip_on_launch = true
@@ -31,9 +32,10 @@ resource "aws_subnet" "this_subnet" {
 }
 
 resource "aws_security_group" "this_sg" {
+   count = length(data.aws_vpcs.by_name.ids) == 0 ? 1 : 0
   name        = "SankariEx-sg"
   description = "Main security group"
-  vpc_id      = aws_vpc.this_vpc.id
+  vpc_id      = aws_vpc.this_vpc[0].id
 
   ingress {
     description      = "Allow HTTP"
